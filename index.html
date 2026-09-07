@@ -288,6 +288,37 @@
   }
   .garage-extra strong { color: var(--gold); }
 
+
+  /* ===== HUNTERS ===== */
+  .hunters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 22px; }
+  .hunter {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 26px 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  .hunter:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 12px 40px rgba(245,185,66,0.15); }
+  .hunter .photo {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--gold);
+    margin: 0 auto 14px;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hunter:hover .photo { transform: scale(1.08); box-shadow: 0 0 30px rgba(245,185,66,0.5); }
+  .hunter .name { font-weight: 800; font-size: 0.95rem; line-height: 1.2; }
+  .hunter .role { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 5px; letter-spacing: 0.5px; }
+  .hunter .role.lider { color: var(--gold); font-weight: 700; }
+  .hunter .role.ex { color: var(--red); font-weight: 700; }
+  .hunter .yt { display: inline-block; margin-top: 10px; font-size: 0.7rem; color: var(--gold); opacity: 0.8; }
+
 /* ===== FOOTER ===== */
   footer {
     text-align: center;
@@ -459,6 +490,81 @@
 
   <div class="garage-extra reveal">
     E a garagem não para por aí: também tem o <strong>Dodge Charger 1970</strong> em restauro, o <strong>Skyline R34</strong> de dar respeito e as motos que os amigos ganharam de presente. 🏁
+  </div>
+</section>
+
+
+<!-- HUNTERS -->
+<section>
+  <div class="section-title reveal">
+    <div class="mini">A Equipe</div>
+    <h2>Caçadores de Lendas 🏹</h2>
+    <p>O grupo que virou família. Clica em qualquer caçador pra conhecer o canal dele!</p>
+  </div>
+  <div class="hunters-grid">
+    <a class="hunter reveal" href="https://www.youtube.com/@renatogarciayoutuber" target="_blank" rel="noopener">
+      <img class="photo" src="https://yt3.googleusercontent.com/S-_Z3cpUKjWr4vHaMMxuT75v_09zUfWTidANDgFxEeuJDGDWNNS-jBdBzCBEHD3LP8WxpVtn=s400-c-k-c0x00ffffff-no-rj" alt="Renato Garcia" loading="lazy">
+      <div class="name">Renato Garcia</div>
+      <span class="role lider">O LÍDER DOS CAÇADORES</span>
+      <span class="yt">▶ @renatogarciayoutuber</span>
+    </a>
+    <a class="hunter reveal" href="https://www.youtube.com/@ThiagoReis" target="_blank" rel="noopener">
+      <img class="photo" src="https://yt3.googleusercontent.com/hfiEhYTJ27p1X4z3uVhrOxLvtd3LaQ2mW06I65PJB_SKI9jVcdIp0lOTlMMT7A5B1ICA7rYQqWQ=s400-c-k-c0x00ffffff-no-rj" alt="Thiago Reis" loading="lazy">
+      <div class="name">Thiago Reis</div>
+      <span class="role ">O PILOTO</span>
+      <span class="yt">▶ @ThiagoReis</span>
+    </a>
+    <a class="hunter reveal" href="https://www.youtube.com/@LeoDaHornet" target="_blank" rel="noopener">
+      <img class="photo" src="https://yt3.googleusercontent.com/J1FGGhaVkmZKbKqMJdw6XTLUJdTLrijP92jPxBqhOtl9JUlCfwCjkIMH0cFpPTJ4f-t_N3fbKQ=s400-c-k-c0x00ffffff-no-rj" alt="Léo da Hornet" loading="lazy">
+      <div class="name">Léo da Hornet</div>
+      <span class="role ">O DA HORNET</span>
+      <span class="yt">▶ @LeoDaHornet</span>
+    </a>
+    <a class="hunter reveal" href="https://www.youtube.com/@RenanFiorini" target="_blank" rel="noopener">
+      <img class="photo" src="https://yt3.googleusercontent.com/KD041iUKqEuDJmPWB_rkS1IYqSXkVfcZLpJ5lf5nOykdUoGtUdqFRIdBTt_eX8X-_57Uf3P3-PA=s400-c-k-c0x00ffffff-no-rj" alt="Renan Fiorini" loading="lazy">
+      <div class="name">Renan Fiorini</div>
+      <span class="role ">CAÇADOR DE LENDA</span>
+      <span class="yt">▶ @RenanFiorini</span>
+    </a>
+    <a class="hunter reveal" href="https://www.youtube.com/@BoquinhaOficial" target="_blank" rel="noopener">
+      <img class="photo" src="https://yt3.googleusercontent.com/ytc/AIdro_mEZHvwRV0keWlWe2UghE8cXAaBJ4oGZBpTbw3Y2PtF4KjhE3lNuL5IOut58OWZDL5bag=s400-c-k-c0x00ffffff-no-rj" alt="Boquinha" loading="lazy">
+      <div class="name">Boquinha</div>
+      <span class="role ">CAÇADOR DE LENDA</span>
+      <span class="yt">▶ @BoquinhaOficial</span>
+    </a>
+    <a class="hunter reveal" href="https://www.youtube.com/@BrunoBarretoYT" target="_blank" rel="noopener">
+      <img class="photo" src="https://yt3.googleusercontent.com/ZZKuQvd8e-l7S1HiC9IX3GieyjCS9Rp76ZVC35r3X-3nrjjnwNEKAHcNSPxWRr_0Di5fhY2EPA=s400-c-k-c0x00ffffff-no-rj" alt="Bruno Barreto" loading="lazy">
+      <div class="name">Bruno Barreto</div>
+      <span class="role ">CAÇADOR DE LENDA</span>
+      <span class="yt">▶ @BrunoBarretoYT</span>
+    </a>
+    <a class="hunter reveal" href="https://www.youtube.com/@GuiNobre" target="_blank" rel="noopener">
+      <img class="photo" src="https://yt3.googleusercontent.com/YyiuKRBVwgFRizAsEDGgKKImUMh3sCq_3-j70kDIdIiAp33cOrYd8LzxwPzth2uXw_rFC7mT3Q=s400-c-k-c0x00ffffff-no-rj" alt="Gui Nobre" loading="lazy">
+      <div class="name">Gui Nobre</div>
+      <span class="role ">CAÇADOR DE LENDA</span>
+      <span class="yt">▶ @GuiNobre</span>
+    </a>
+    <a class="hunter reveal" href="https://www.youtube.com/@DaniNobrega" target="_blank" rel="noopener">
+      <img class="photo" src="https://yt3.googleusercontent.com/ytc/AIdro_nYnI2gxry5ZBXgDzfZH6SV4zJo3Atm1AaVpC3N3Etk3EQ=s400-c-k-c0x00ffffff-no-rj" alt="Dani Nóbrega" loading="lazy">
+      <div class="name">Dani Nóbrega</div>
+      <span class="role ">CAÇADOR DE LENDA</span>
+      <span class="yt">▶ @DaniNobrega</span>
+    </a>
+    <a class="hunter reveal" href="https://www.youtube.com/@RomaStreet" target="_blank" rel="noopener">
+      <img class="photo" src="https://yt3.googleusercontent.com/1RCHxFf4IzTVoFsjP7VC6pE6DRj27U2TtLCKBpx-wvC4uh4Inqfex3ANTT-l9-PvXOroX8UDSFs=s400-c-k-c0x00ffffff-no-rj" alt="Roma Street" loading="lazy">
+      <div class="name">Roma Street</div>
+      <span class="role ex">EX-INTEGRANTE</span>
+      <span class="yt">▶ @RomaStreet</span>
+    </a>
+    <a class="hunter reveal" href="https://www.youtube.com/@BotoBC" target="_blank" rel="noopener">
+      <img class="photo" src="https://yt3.googleusercontent.com/Sn8P1cHyRMjE5I8WTAfCeJo-i5aDeABr5vUI5Vd-HddsrPTo-1Xpjn6g20YTsQgvqsWH6W11=s400-c-k-c0x00ffffff-no-rj" alt="Boto BC" loading="lazy">
+      <div class="name">Boto BC</div>
+      <span class="role ">CAÇADOR DE LENDA</span>
+      <span class="yt">▶ @BotoBC</span>
+    </a>
+  </div>
+  <div class="garage-extra reveal" style="margin-top:28px">
+    Do desafio de moto à música <strong>"Nois Tá Diferente"</strong> — os Caçadores de Lendas provam que amizade verdadeira é a maior conquista de todas. 🤝
   </div>
 </section>
 
