@@ -242,7 +242,53 @@
   .wall::-webkit-scrollbar { width: 6px; }
   .wall::-webkit-scrollbar-thumb { background: rgba(245,185,66,0.3); border-radius: 3px; }
 
-  /* ===== FOOTER ===== */
+  
+  /* ===== GARAGE ===== */
+  .garage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+  .vehicle {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+  }
+  .vehicle:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 16px 50px rgba(245,185,66,0.18); }
+  .vehicle .thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--bg2); }
+  .vehicle .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  .vehicle:hover .thumb img { transform: scale(1.06); }
+  .vehicle .tag {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(10,10,15,0.85);
+    border: 1px solid rgba(245,185,66,0.5);
+    color: var(--gold);
+    font-size: 0.7rem; font-weight: 800;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 100px;
+    backdrop-filter: blur(4px);
+  }
+  .vehicle .info { padding: 16px 18px 18px; }
+  .vehicle .info h4 { font-size: 1rem; line-height: 1.35; }
+  .vehicle .info p { font-size: 0.83rem; color: var(--muted); margin-top: 6px; }
+  .vehicle .play {
+    display: inline-block; margin-top: 10px;
+    font-size: 0.75rem; font-weight: 700; color: var(--gold);
+  }
+  .garage-extra {
+    margin-top: 28px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    background: var(--bg2);
+    border: 1px dashed rgba(245,185,66,0.3);
+    border-radius: 16px;
+    padding: 18px 22px;
+  }
+  .garage-extra strong { color: var(--gold); }
+
+/* ===== FOOTER ===== */
   footer {
     text-align: center;
     padding: 60px 20px 40px;
@@ -350,6 +396,69 @@
     <div class="give reveal"><span class="emoji">✈️</span><h4>Viagens dos sonhos</h4><p>Experiências que a galera nunca esqueceu</p></div>
     <div class="give reveal"><span class="emoji">🎁</span><h4>Presentes diários</h4><p>Sorteios constantes na comunidade</p></div>
     <div class="give reveal"><span class="emoji">🤝</span><h4>Gestos silenciosos</h4><p>Muita ajuda que nem chegou aos olhos do público</p></div>
+  </div>
+</section>
+
+
+<!-- GARAGE -->
+<section>
+  <div class="section-title reveal">
+    <div class="mini">A Garagem RG</div>
+    <h2>Motos, carros e caminhonetes</h2>
+    <p>A coleção de quem começou de moto e hoje tem uma garagem de sonho. Cada foto é do canal oficial — clica e assiste o vídeo!</p>
+  </div>
+
+  <div class="quotes-grid" style="margin-bottom:34px">
+    <div class="quote reveal" style="text-align:center"><h3 style="color:var(--gold);margin-top:0">🏍️ As Motos</h3><p>De uma única moto pra uma coleção que quase limpou uma concessionária Honda inteira.</p></div>
+    <div class="quote reveal" style="text-align:center"><h3 style="color:var(--gold);margin-top:0">🏎️ Os Carros</h3><p>De sonho de criança pra Ferrari 458, GT-R R35 e Porsche GT3 RS na garagem.</p></div>
+    <div class="quote reveal" style="text-align:center"><h3 style="color:var(--gold);margin-top:0">🛻 As Caminhonetes</h3><p>Raptor e F250 pra aventurar na fazenda com os amigos.</p></div>
+  </div>
+
+  <div class="garage-grid">
+    <a class="vehicle reveal" href="https://www.youtube.com/watch?v=SfN5XjabqXk" target="_blank" rel="noopener">
+      <div class="thumb"><span class="tag">🏍️ Moto</span><img src="https://img.youtube.com/vi/SfN5XjabqXk/hqdefault.jpg" alt="Coleção Honda do Renato Garcia" loading="lazy"></div>
+      <div class="info"><h4>Comprou quase TODAS as motos de uma concessionária Honda</h4><p>A hora que o Renato limpou a loja inteira — "nunca pensei fazer isso"</p><span class="play">▶️ Assistir no canal</span></div>
+    </a>
+    <a class="vehicle reveal" href="https://www.youtube.com/watch?v=vfOUtEkd1KE" target="_blank" rel="noopener">
+      <div class="thumb"><span class="tag">🏍️ Moto</span><img src="https://img.youtube.com/vi/vfOUtEkd1KE/hqdefault.jpg" alt="Moto de motocross nova" loading="lazy"></div>
+      <div class="info"><h4>Motocross nova 0km, direto da Kawasaki Brasil</h4><p>Mais uma moto pra coleção — a paixão que nunca acaba</p><span class="play">▶️ Assistir no canal</span></div>
+    </a>
+    <a class="vehicle reveal" href="https://www.youtube.com/watch?v=ZAasnU_s_Bo" target="_blank" rel="noopener">
+      <div class="thumb"><span class="tag">🏍️ Moto</span><img src="https://img.youtube.com/vi/ZAasnU_s_Bo/hqdefault.jpg" alt="Hornet restaurada" loading="lazy"></div>
+      <div class="info"><h4>Restaurou a Hornet antiga e deixou 0km</h4><p>A moto da nostalgia voltou novinha — muito nova!</p><span class="play">▶️ Assistir no canal</span></div>
+    </a>
+    <a class="vehicle reveal" href="https://www.youtube.com/watch?v=GeeShkUADPU" target="_blank" rel="noopener">
+      <div class="thumb"><span class="tag">🏍️ Moto</span><img src="https://img.youtube.com/vi/GeeShkUADPU/hqdefault.jpg" alt="CB1000 do Renato Garcia" loading="lazy"></div>
+      <div class="info"><h4>CB1000: 3 anos comprada e nunca foi buscada na loja kkkk</h4><p>Tanta moto que até esquece uma na concessionária 😂</p><span class="play">▶️ Assistir no canal</span></div>
+    </a>
+    <a class="vehicle reveal" href="https://www.youtube.com/watch?v=b7g4l9qngEw" target="_blank" rel="noopener">
+      <div class="thumb"><span class="tag">🏎️ Carro</span><img src="https://img.youtube.com/vi/b7g4l9qngEw/hqdefault.jpg" alt="Ferrari 458 do Renato Garcia" loading="lazy"></div>
+      <div class="info"><h4>Ferrari 458 — "Esse é meu carro novo" 😍</h4><p>O dia que o sonho de muito gente se realizou na garagem dele</p><span class="play">▶️ Assistir no canal</span></div>
+    </a>
+    <a class="vehicle reveal" href="https://www.youtube.com/watch?v=xd8zmq9R8WE" target="_blank" rel="noopener">
+      <div class="thumb"><span class="tag">🏎️ Carro</span><img src="https://img.youtube.com/vi/xd8zmq9R8WE/hqdefault.jpg" alt="Nissan GT-R R35 do Renato Garcia" loading="lazy"></div>
+      <div class="info"><h4>Nissan GT-R R35 pronto!</h4><p>O Godzilla preparado — e ainda tem o lendário Skyline R34 estilo Velozes e Furiosos</p><span class="play">▶️ Assistir no canal</span></div>
+    </a>
+    <a class="vehicle reveal" href="https://www.youtube.com/watch?v=8EBtLlGpLQM" target="_blank" rel="noopener">
+      <div class="thumb"><span class="tag">🏎️ Carro</span><img src="https://img.youtube.com/vi/8EBtLlGpLQM/hqdefault.jpg" alt="Porsche GT3 RS do Renato Garcia" loading="lazy"></div>
+      <div class="info"><h4>Porsche 911 GT3 RS — 600km rodados até Londrina</h4><p>A mais nova aquisição, escolhida a dedo pra estrada</p><span class="play">▶️ Assistir no canal</span></div>
+    </a>
+    <a class="vehicle reveal" href="https://www.youtube.com/watch?v=NWqFSmIJqIM" target="_blank" rel="noopener">
+      <div class="thumb"><span class="tag">🏎️ Carro</span><img src="https://img.youtube.com/vi/NWqFSmIJqIM/hqdefault.jpg" alt="Ferrari de 4 milhões" loading="lazy"></div>
+      <div class="info"><h4>"Será que compro outra Ferrari de 4 milhões?"</h4><p>Quando uma Ferrari não é suficiente 😅</p><span class="play">▶️ Assistir no canal</span></div>
+    </a>
+    <a class="vehicle reveal" href="https://www.youtube.com/watch?v=cv53A77Pow4" target="_blank" rel="noopener">
+      <div class="thumb"><span class="tag">🛻 Caminhonete</span><img src="https://img.youtube.com/vi/cv53A77Pow4/hqdefault.jpg" alt="Caminhonete nova do Renato Garcia" loading="lazy"></div>
+      <div class="info"><h4>Caminhonete nova direto pra fazenda</h4><p>Da concessionária pra estrada de chão, sem pensar duas vezes</p><span class="play">▶️ Assistir no canal</span></div>
+    </a>
+    <a class="vehicle reveal" href="https://www.youtube.com/watch?v=RyccAWUp8dg" target="_blank" rel="noopener">
+      <div class="thumb"><span class="tag">🛻 Caminhonete</span><img src="https://img.youtube.com/vi/RyccAWUp8dg/hqdefault.jpg" alt="F250 do Renato Garcia" loading="lazy"></div>
+      <div class="info"><h4>F250 — vlog de 1 hora de viagem</h4><p>Porque estrada boa é estrada longa</p><span class="play">▶️ Assistir no canal</span></div>
+    </a>
+  </div>
+
+  <div class="garage-extra reveal">
+    E a garagem não para por aí: também tem o <strong>Dodge Charger 1970</strong> em restauro, o <strong>Skyline R34</strong> de dar respeito e as motos que os amigos ganharam de presente. 🏁
   </div>
 </section>
 
