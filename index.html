@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renato Garcia — A Estrada de um Sonhador</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --card: #16161f;
+    --gold: #f5b942;
+    --gold2: #ffd700;
+    --red: #e03e3e;
+    --text: #f2f2f5;
+    --muted: #9a9aa8;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ===== ROAD ANIMATION BACKGROUND ===== */
+  .road-bg {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 40vh;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    z-index: -1;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 50% -20%, rgba(245,185,66,0.15), transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(224,62,62,0.08), transparent 50%);
+  }
+
+  .hero-badge {
+    border: 1px solid rgba(245,185,66,0.4);
+    color: var(--gold);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    background: rgba(245,185,66,0.06);
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1.05;
+    background: linear-gradient(135deg, #fff 30%, var(--gold2) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero h1 span { display: block; font-size: 0.45em; font-weight: 600; color: var(--muted); -webkit-text-fill-color: var(--muted); letter-spacing: 4px; text-transform: uppercase; margin-top: 8px; }
+
+  .hero p.tagline {
+    margin-top: 24px;
+    max-width: 600px;
+    color: var(--muted);
+    font-size: 1.1rem;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .scroll-hint {
+    margin-top: 48px;
+    font-size: 24px;
+    animation: bounce 2s infinite;
+    color: var(--gold);
+  }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+
+  /* ===== STATS ===== */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    max-width: 1000px;
+    margin: -60px auto 0;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .stat {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 18px;
+    padding: 28px 16px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .stat:hover { transform: translateY(-6px); border-color: rgba(245,185,66,0.5); }
+  .stat .num { font-size: 2.2rem; font-weight: 900; color: var(--gold2); }
+  .stat .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 6px; }
+
+  /* ===== SECTIONS ===== */
+  section { max-width: 1000px; margin: 0 auto; padding: 90px 20px; }
+
+  .section-title { text-align: center; margin-bottom: 50px; }
+  .section-title .mini { color: var(--gold); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
+  .section-title h2 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 900; margin-top: 8px; }
+  .section-title p { color: var(--muted); max-width: 550px; margin: 12px auto 0; }
+
+  /* ===== TIMELINE ===== */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--gold), var(--red), transparent);
+    border-radius: 3px;
+  }
+
+  .tl-item { position: relative; margin-bottom: 40px; padding-left: 30px; }
+  .tl-item::before {
+    content: '🏍️';
+    position: absolute;
+    left: -30px; top: 0;
+    width: 48px; height: 48px;
+    background: var(--card);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 0 20px rgba(245,185,66,0.3);
+  }
+  .tl-item .year { color: var(--gold); font-weight: 800; font-size: 0.85rem; letter-spacing: 2px; }
+  .tl-item h3 { font-size: 1.3rem; margin: 4px 0 8px; }
+  .tl-item p { color: var(--muted); font-size: 0.95rem; }
+  .tl-item {
+    opacity: 0; transform: translateX(-20px);
+    transition: all 0.6s ease;
+  }
+  .tl-item.show { opacity: 1; transform: none; }
+
+  /* ===== QUOTES ===== */
+  .quotes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .quote {
+    background: linear-gradient(160deg, var(--card), #1a1a25);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  .quote:hover { transform: scale(1.03) rotate(-1deg); }
+  .quote::before { content: '"'; font-size: 70px; color: rgba(245,185,66,0.25); position: absolute; top: 4px; left: 18px; font-family: Georgia, serif; }
+  .quote p { font-size: 1.05rem; font-weight: 600; margin-top: 18px; }
+  .quote span { display: block; margin-top: 12px; color: var(--gold); font-size: 0.8rem; letter-spacing: 1px; }
+
+  /* ===== GIVEAWAY CARDS ===== */
+  .gives-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+  .give {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 34px 20px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s ease;
+  }
+  .give:hover { border-color: var(--gold); box-shadow: 0 10px 40px rgba(245,185,66,0.15); transform: translateY(-6px); }
+  .give .emoji { font-size: 44px; display: block; margin-bottom: 14px; }
+  .give h4 { font-size: 1.05rem; margin-bottom: 6px; }
+  .give p { font-size: 0.85rem; color: var(--muted); }
+
+  /* ===== MURAL ===== */
+  .mural-box {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 24px;
+    padding: 30px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .mural-box h3 { text-align: center; margin-bottom: 8px; font-size: 1.3rem; }
+  .mural-box .sub { text-align: center; color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
+  .mural-box textarea {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 14px;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 90px;
+  }
+  .mural-box textarea:focus { outline: none; border-color: var(--gold); }
+  .mural-box button {
+    margin-top: 14px;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--gold), #ff9800);
+    color: #1a1a1a;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .mural-box button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,185,66,0.4); }
+
+  .wall { margin-top: 30px; display: grid; gap: 12px; max-height: 320px; overflow-y: auto; padding-right: 6px; }
+  .wall-msg {
+    background: var(--bg2);
+    border-left: 3px solid var(--gold);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 0.92rem;
+    animation: fadeUp 0.5s ease both;
+  }
+  .wall-msg .who { display: block; font-size: 0.75rem; color: var(--gold); margin-top: 6px; font-weight: 700; }
+  .wall::-webkit-scrollbar { width: 6px; }
+  .wall::-webkit-scrollbar-thumb { background: rgba(245,185,66,0.3); border-radius: 3px; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 60px 20px 40px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  footer .heart { color: var(--red); }
+  footer .rg { color: var(--gold); font-weight: 800; }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+  .reveal.show { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<div class="road-bg"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">✊ Tributo de Fã</div>
+  <h1>RENATO GARCIA<span>A estrada de um sonhador</span></h1>
+  <p class="tagline">De uma moto e um sonho a uma das maiores histórias do YouTube brasileiro. Milhões de quilômetros, milhares de vidas transformadas e uma frase que virou marca: <strong style="color:var(--gold)">"Deus é bom."</strong></p>
+  <div class="scroll-hint">⬇️</div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat reveal"><div class="num" data-count="6">0</div><div class="label">Milhões de inscritos</div></div>
+  <div class="stat reveal"><div class="num" data-count="150" data-suffix="+">0</div><div class="label">Países e estradas</div></div>
+  <div class="stat reveal"><div class="num" data-count="100" data-suffix="+">0</div><div class="label">Motos doadas</div></div>
+  <div class="stat reveal"><div class="num" data-count="14" data-suffix="+">0</div><div class="label">Anos de estrada</div></div>
+</div>
+
+<!-- TIMELINE -->
+<section>
+  <div class="section-title reveal">
+    <div class="mini">A Jornada</div>
+    <h2>Conquistas que inspiram</h2>
+    <p>Cada viagem, cada desafio, cada sonho realizado no canal.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="year">O COMEÇO</div>
+      <h3>Uma moto, uma câmera, um sonho</h3>
+      <p>Sem estrutura, sem patrocínio, só com a garra de quem acredita. Renato começou gravando suas aventuras de moto e conquistou o Brasil com sua simplicidade e alegria genuína.</p>
+    </div>
+    <div class="tl-item">
+      <div class="year">A EXPLOSÃO</div>
+      <h3>Milhões de "bem-vindos ao canal"</h3>
+      <p>O canal virou fenômeno. O jeito leal de falar, os "Ô ô ô!" e a humildade transformaram o Renato em um dos criadores mais amados do YouTube brasileiro.</p>
+    </div>
+    <div class="tl-item">
+      <div class="year">O FIM DO MUNDO</div>
+      <h3>Rota até Ushuaia 🏔️</h3>
+      <p>De moto até o fim do mundo: a mítica viagem até Ushuaia, na Patagônia, enfrentando frio extremo, tempestades e estradas intermináveis da Ruta 40.</p>
+    </div>
+    <div class="tl-item">
+      <div class="year">O SONHO GIGANTE</div>
+      <h3>Moto até o Alasca 🇺🇸</h3>
+      <p>Uma das maiores aventuras de moto do YouTube mundial: cruzando continentes, a Rota 66 e chegando ao Alasca. Milhares de quilômetros provando que sonho grande se conquista pedalada por pedalada.</p>
+    </div>
+    <div class="tl-item">
+      <div class="year">A GALERA</div>
+      <h3>Ministério das Motos 🏍️</h3>
+      <p>A comunidade mais engajada do país. A "galera do RG" virou família — um exército de fãs que vive cada curva, cada km e cada sorteio junto com ele.</p>
+    </div>
+    <div class="tl-item">
+      <div class="year">O LEGADO</div>
+      <h3>Mãos que doam, coração que sente ❤️</h3>
+      <p>Motos, carros, casas e centenas de atitudes: Renato transformou o sucesso do canal em generosidade real, mudando a vida de famílias inteiras.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section>
+  <div class="section-title reveal">
+    <div class="mini">As Frases</div>
+    <h2>Frases que viraram marca</h2>
+  </div>
+  <div class="quotes-grid">
+    <div class="quote reveal"><p>Deus é bom. O tempo todo.</p><span>— A frase que define tudo</span></div>
+    <div class="quote reveal"><p>Ô ô ô, bem-vindos ao canal!</p><span>— O grito que abriu milhares de vídeos</span></div>
+    <div class="quote reveal"><p>Se tá difícil, é porque vale a pena.</p><span>— Filosofia de estrada</span></div>
+    <div class="quote reveal"><p>Prazer, Renato!</p><span>— A apresentação mais famosa do YouTube BR</span></div>
+    <div class="quote reveal"><p>Sonho não tem tamanho, tem estrada.</p><span>— O combustível da jornada</span></div>
+    <div class="quote reveal"><p>A galera tá junto, e isso não tem preço.</p><span>— Sobre a comunidade</span></div>
+  </div>
+</section>
+
+<!-- GIVEAWAYS -->
+<section>
+  <div class="section-title reveal">
+    <div class="mini">Generosidade</div>
+    <h2>O que ele já transformou em sorriso</h2>
+    <p>Não é só sobre moto e estrada — é sobre devolver tudo que a vida deu.</p>
+  </div>
+  <div class="gives-grid">
+    <div class="give reveal"><span class="emoji">🏍️</span><h4>Motos doadas</h4><p>Centenas de motos novas entregues aos fãs</p></div>
+    <div class="give reveal"><span class="emoji">🚗</span><h4>Carros sorteados</h4><p>Sorteios históricos que mudaram vidas</p></div>
+    <div class="give reveal"><span class="emoji">🏠</span><h4>Casas e projetos</h4><p>Ajuda real pra famílias que precisavam</p></div>
+    <div class="give reveal"><span class="emoji">✈️</span><h4>Viagens dos sonhos</h4><p>Experiências que a galera nunca esqueceu</p></div>
+    <div class="give reveal"><span class="emoji">🎁</span><h4>Presentes diários</h4><p>Sorteios constantes na comunidade</p></div>
+    <div class="give reveal"><span class="emoji">🤝</span><h4>Gestos silenciosos</h4><p>Muita ajuda que nem chegou aos olhos do público</p></div>
+  </div>
+</section>
+
+<!-- MURAL -->
+<section>
+  <div class="section-title reveal">
+    <div class="mini">Mural da Galera</div>
+    <h2>Deixe seu recado pro Renato</h2>
+    <p>Escreva uma mensagem de carinho. Talvez ele leia um dia. 🙏</p>
+  </div>
+
+  <div class="mural-box reveal">
+    <h3>💬 Mural dos Fãs</h3>
+    <p class="sub">Sua mensagem fica salva aqui neste app — manda o link pra galera ver!</p>
+    <textarea id="msgInput" placeholder="Renato, sua história me ensinou que..."></textarea>
+    <button onclick="addMsg()">Enviar recado 🏍️</button>
+    <div class="wall" id="wall"></div>
+  </div>
+</section>
+
+<footer>
+  Feito com <span class="heart">❤️</span> pela galera, para o <span class="rg">Renato Garcia</span>.<br>
+  Tributo de fã não-oficial. Deus é bom. 🙏
+</footer>
+
+<script>
+  // ===== REVEAL ON SCROLL =====
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal, .tl-item').forEach(el => observer.observe(el));
+
+  // ===== ANIMATED COUNTERS =====
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.count);
+      const suffix = el.dataset.suffix || (target >= 100 ? '+' : 'M+');
+      let current = 0;
+      const step = target / 60;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(current) + (current >= target ? (target >= 100 ? '+' : 'M+') : '');
+      }, 30);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat .num').forEach(el => counterObs.observe(el));
+
+  // ===== MURAL (localStorage) =====
+  function loadMsgs() {
+    try {
+      return JSON.parse(localStorage.getItem('rg_msgs') || '[]');
+    } catch { return []; }
+  }
+
+  function renderMsgs() {
+    const wall = document.getElementById('wall');
+    const msgs = loadMsgs();
+    wall.innerHTML = msgs.slice().reverse().map(m =>
+      `<div class="wall-msg">${escapeHtml(m.text)}<span class="who">— ${escapeHtml(m.who)}</span></div>`
+    ).join('');
+  }
+
+  function escapeHtml(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function addMsg() {
+    const input = document.getElementById('msgInput');
+    const text = input.value.trim();
+    if (!text) return;
+    const msgs = loadMsgs();
+    msgs.push({ text, who: 'Um fã da galera', date: new Date().toISOString() });
+    localStorage.setItem('rg_msgs', JSON.stringify(msgs.slice(-100)));
+    input.value = '';
+    renderMsgs();
+  }
+
+  renderMsgs();
+</script>
+</body>
+</html>
