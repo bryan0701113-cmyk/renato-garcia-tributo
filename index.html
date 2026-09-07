@@ -272,10 +272,10 @@
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat reveal"><div class="num" data-count="6">0</div><div class="label">Milhões de inscritos</div></div>
-  <div class="stat reveal"><div class="num" data-count="150" data-suffix="+">0</div><div class="label">Países e estradas</div></div>
-  <div class="stat reveal"><div class="num" data-count="100" data-suffix="+">0</div><div class="label">Motos doadas</div></div>
-  <div class="stat reveal"><div class="num" data-count="14" data-suffix="+">0</div><div class="label">Anos de estrada</div></div>
+  <div class="stat reveal"><div class="num" data-count="30" data-suffix="M+">0</div><div class="label">Milhões de inscritos</div></div>
+  <div class="stat reveal"><div class="num" data-count="5.8" data-suffix="K+" data-decimal="1">0</div><div class="label">Vídeos publicados</div></div>
+  <div class="stat reveal"><div class="num" data-count="13" data-suffix="+">0</div><div class="label">Anos de estrada</div></div>
+  <div class="stat reveal"><div class="num" data-count="100" data-suffix="+">0</div><div class="label">Sonhos e prêmios entregues</div></div>
 </div>
 
 <!-- TIMELINE -->
@@ -329,10 +329,10 @@
   <div class="quotes-grid">
     <div class="quote reveal"><p>Deus é bom. O tempo todo.</p><span>— A frase que define tudo</span></div>
     <div class="quote reveal"><p>Ô ô ô, bem-vindos ao canal!</p><span>— O grito que abriu milhares de vídeos</span></div>
-    <div class="quote reveal"><p>Se tá difícil, é porque vale a pena.</p><span>— Filosofia de estrada</span></div>
+    <div class="quote reveal"><p>30 MILHÕES DE INSCRITOS! 🚨</p><span>— A marca histórica de 2026</span></div>
     <div class="quote reveal"><p>Prazer, Renato!</p><span>— A apresentação mais famosa do YouTube BR</span></div>
-    <div class="quote reveal"><p>Sonho não tem tamanho, tem estrada.</p><span>— O combustível da jornada</span></div>
-    <div class="quote reveal"><p>A galera tá junto, e isso não tem preço.</p><span>— Sobre a comunidade</span></div>
+    <div class="quote reveal"><p>Ministério das Motos 🏍️</p><span>— A comunidade que virou família</span></div>
+    <div class="quote reveal"><p>Vídeo novo todo dia às 10h da manhã.</p><span>— A rotina que nunca parou</span></div>
   </div>
 </section>
 
@@ -346,7 +346,7 @@
   <div class="gives-grid">
     <div class="give reveal"><span class="emoji">🏍️</span><h4>Motos doadas</h4><p>Centenas de motos novas entregues aos fãs</p></div>
     <div class="give reveal"><span class="emoji">🚗</span><h4>Carros sorteados</h4><p>Sorteios históricos que mudaram vidas</p></div>
-    <div class="give reveal"><span class="emoji">🏠</span><h4>Casas e projetos</h4><p>Ajuda real pra famílias que precisavam</p></div>
+    <div class="give reveal"><span class="emoji">🏠</span><h4>Famílias ajudadas</h4><p>Apoio real pra quem mais precisava</p></div>
     <div class="give reveal"><span class="emoji">✈️</span><h4>Viagens dos sonhos</h4><p>Experiências que a galera nunca esqueceu</p></div>
     <div class="give reveal"><span class="emoji">🎁</span><h4>Presentes diários</h4><p>Sorteios constantes na comunidade</p></div>
     <div class="give reveal"><span class="emoji">🤝</span><h4>Gestos silenciosos</h4><p>Muita ajuda que nem chegou aos olhos do público</p></div>
@@ -397,7 +397,11 @@
           current = target;
           clearInterval(timer);
         }
-        el.textContent = Math.floor(current) + (current >= target ? (target >= 100 ? '+' : 'M+') : '');
+        const isDone = current >= target;
+        const suffix = el.dataset.suffix || (target >= 100 ? '+' : 'M+');
+        const decimals = parseInt(el.dataset.decimal || '0');
+        const val = decimals ? current.toFixed(decimals) : Math.floor(current);
+        el.textContent = isDone ? val + suffix : val;
       }, 30);
       counterObs.unobserve(el);
     });
